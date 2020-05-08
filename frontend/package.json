@@ -1,0 +1,26 @@
+{
+  "name": "wellpass-frontend",
+  "version": "2.0.0",
+  "description": "wellpass frontend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "server": "nodemon server"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "colors": "^1.4.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  },
+  "author": "Sarthak Arora, Varun Ramnani, Pranav Garg, Akshit Suri",
+  "license": "MIT"
+}
