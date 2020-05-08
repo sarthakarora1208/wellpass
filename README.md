@@ -2,9 +2,7 @@
 
 > Well pass is a blockchain powered identity verification application
 
-Live preview of the application:
 
-[https://thewellpass.herokuapp.com/](https://thewellpass.herokuapp.com/)
 ## Setup
 
 Rename "config/config.env.env" to "config/config.env" and update the values/settings to your own
