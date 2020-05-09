@@ -9,6 +9,11 @@ const url = require('url');
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
+// Route files
+// const auth = require('./routes/auth');
+// const hopsitals = require('./routes/hospitals');
+// const pdRequests = require('./routes/patientDataRequests');
+
 // Frontend Route files
 const authFrontend = require('./routes/auth');
 const userFrontend = require('./routes/user');
@@ -56,7 +61,19 @@ app.use(function(req, res, next) {
 });
 
 // controllers
-app.get('/', (req, res) => res.send('hello'));
+app.get('/', (req, res) => res.render('index'));
+app.get('/verify', (req, res) => {
+	const queryObject = url.parse(req.url, true).query;
+	//console.log(queryObject.address)
+	res.render('verify-address', { address: queryObject.address });
+});
+app.get('/qrscanner', (req, res) => res.render('qrscanner'));
+app.get('/contactUs', (req, res) => res.render('contactUs'));
+// Mount routers
+app.use('/auth', authFrontend);
+app.use('/users', userFrontend);
+app.use('/hospitals', hospitalFrontend);
+app.use('/admin', adminFrontend);
 
 const PORT = process.env.PORT || 5000;
 
