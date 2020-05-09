@@ -10,7 +10,10 @@ const url = require('url');
 dotenv.config({ path: './config/config.env' });
 
 // Frontend Route files
-
+const authFrontend = require('./routes/auth');
+const userFrontend = require('./routes/user');
+const hospitalFrontend = require('./routes/hospital');
+const adminFrontend = require('./routes/hospital');
 
 // initialising the app
 const app = express();
@@ -18,19 +21,17 @@ const app = express();
 // EJS
 app.set('view engine', 'ejs');
 
-
 // Cookie parser
 app.use(cookieParser());
 
-
 // Express session
 app.use(
-    session({
-      secret: 'secret',
-      resave: true,
-      saveUninitialized: true,
-    })
-  );
+	session({
+		secret: 'secret',
+		resave: true,
+		saveUninitialized: true
+	})
+);
 // Connect flash
 app.use(flash());
 
@@ -47,29 +48,23 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Global variables
-app.use(function (req, res, next) {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  res.locals.error = req.flash('error');
-  next();
+app.use(function(req, res, next) {
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
 });
-
 
 // controllers
 app.get('/', (req, res) => res.send('hello'));
 
 const PORT = process.env.PORT || 5000;
 
-const server = app.listen(
-  PORT,
-  console.log(
-    `Server running in ${process.env.NODE_ENV} mode on port ${PORT}`
-  )
-);
+const server = app.listen(PORT, console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`));
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`);
-  // Close server & exit process
-  // server.close(() => process.exit(1));
+	console.log(`Error: ${err.message}`);
+	// Close server & exit process
+	// server.close(() => process.exit(1));
 });
