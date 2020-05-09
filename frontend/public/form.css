@@ -1,0 +1,17 @@
+div.form1 {
+    margin-top: 150px;
+    align-items: center;
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.ui.form {
+    display: flex;
+    position: relative;
+    max-width: 100%;
+    flex-direction: column;
+}

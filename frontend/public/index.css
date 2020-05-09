@@ -1,0 +1,270 @@
+html,
+body {
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
+    overflow-x: inherit;
+    scroll-behavior: smooth;
+}
+
+#showcase {
+    color: white;
+    height: 100vh;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://media.npr.org/assets/img/2020/02/11/coronavirustreatment1_wide-e5c5c03066a91715b4f0726b6236ed46076a1701.jpg?s=1400");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.ml15 {
+    font-weight: 800;
+    font-size: 3.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+}
+
+.ml15 .word {
+    display: inline-block;
+    line-height: 1em;
+}
+
+#map_2 {
+    height: 550px;
+    width: 100%;
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.material-icons:hover {
+    color: #8EE4AF;
+}
+
+li a:hover {
+    color: #8EE4AF;
+}
+
+.sidenav {
+    background: rgba(1, 3, 29, 0.7);
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+nav {
+    background: rgba(1, 3, 29, 0.39);
+    box-shadow: 0px 15px 10px -15px #111;
+}
+
+.hom-txt {
+    margin-top: 200px;
+}
+
+#feature {
+    margin-top: 20px 0;
+}
+
+.ml2 {
+    font-weight: 900;
+    font-size: 35px;
+}
+
+.ml2 .letter {
+    letter-spacing: 0.1em;
+    line-height: 1em;
+}
+
+h1.ml8 {
+    display: none;
+}
+
+h3.ml8 {
+    text-align: center;
+    font-weight: 900;
+    font-size: 4.5em;
+    color: #fff;
+    width: 2em;
+    height: 2em;
+}
+
+.ml8 .letters-container {
+    position: absolute;
+    /* left: 0; */
+    /* right: 0; */
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    height: 1em;
+}
+
+.ml8 .letters {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    line-height: 0.7em;
+    right: -0.12em;
+    top: -0.2em;
+}
+
+.ml8 .bang {
+    font-size: 1.4em;
+    top: auto;
+    left: -0.06em;
+}
+
+.ml8 .circle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+}
+
+.ml8 .circle-white {
+    width: 3em;
+    height: 3em;
+    border: 2px dashed white;
+    border-radius: 2em;
+}
+
+.ml8 .circle-dark {
+    width: 2.2em;
+    height: 2.2em;
+    background-color: rgba(248, 8, 8, 0.5);
+    border-radius: 3em;
+    z-index: 1;
+}
+
+.ml8 .circle-dark-dashed {
+    border-radius: 2.4em;
+    background-color: transparent;
+    border: 2px dashed white;
+    width: 2.3em;
+    height: 2.3em;
+}
+
+#btn {
+    opacity: 0.8;
+    z-index: 100;
+}
+
+#btn:hover {
+    opacity: 1;
+}
+
+@media (max-width:1000px) {
+    h3.ml8 {
+        font-size: 3em;
+        text-align: center;
+        width: 2em;
+        height: 2em;
+    }
+    .ml2 {
+        font-weight: 900;
+        font-size: 30px;
+    }
+}
+
+@media (max-width:600px) {
+    #para {
+        display: none;
+    }
+    .ml2 {
+        display: none;
+    }
+    h3.ml8 {
+        display: none;
+    }
+    h1.ml8 {
+        display: inline-block;
+        font-weight: 900;
+        font-size: 3.2em;
+        /* text-align: center; */
+        color: #fff;
+        width: 2em;
+        height: 2em;
+    }
+    .ml8 .letters-container {
+        position: absolute;
+        text-align: center;
+        align-self: center;
+        /* left: 0;
+        right: 0; */
+        margin: auto 60px;
+        top: 0;
+        bottom: 0;
+        height: 1em;
+    }
+    .ml8 .letters {
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+        line-height: 0.7em;
+        right: -0.12em;
+        top: -0.2em;
+    }
+    .ml8 .bang {
+        font-size: 1.4em;
+        top: auto;
+        left: -0.06em;
+    }
+    .ml8 .circle {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+    }
+    .ml8 .circle-white {
+        width: 3em;
+        height: 3em;
+        border: 2px dashed white;
+        border-radius: 2em;
+    }
+    .ml8 .circle-dark {
+        width: 2.2em;
+        height: 2.2em;
+        background-color: rgba(248, 8, 8, 0.5);
+        border-radius: 3em;
+        z-index: 1;
+    }
+    .ml8 .circle-dark-dashed {
+        border-radius: 2.4em;
+        background-color: transparent;
+        border: 2px dashed white;
+        width: 2.3em;
+        height: 2.3em;
+    }
+    #btn {
+        opacity: 0.9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 210px auto;
+        z-index: 100;
+    }
+    #btn:hover {
+        opacity: 1;
+    }
+}
+
+.carousel {
+    /* margin: 0; */
+    height: 500px;
+}
+
+.carousel-item {
+    height: 200px;
+}
+
+.features .carousel .carousel-item {
+    width: 400px !important;
+    height: 400px !important;
+    padding: 20px;
+}
+
+.card {
+    border-radius: 8px;
+    position: relative !important;
+    /* right: 20px !important; */
+}

@@ -1,0 +1,60 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar2") %>
+
+        <!-- FORM -->
+        <div class="form1" style="margin-top: 0px;">
+            <div class="ui raised segment dimmable">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="ui text loader">Loading</div>
+                    </div>
+                </div>
+                <h2 class="ui header"><i aria-hidden="true" style="color:#379683 " class="plus icon"></i>Edit Hospital Name</h2>
+                <p style="color: black;"> Edit Hospital details to get the information about a particular patient and to generate its well pass. </p>
+                <div class="ui divider"></div>
+                <form action="/edit-hospital" method="POST" class="ui form">
+                    <div class="field">
+                        <div class="field"><label class="ui header">Name</label>
+                            <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Name of Hospital" name="name" type="text" value=""><i aria-hidden="true" class="user icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Email Address</label>
+                            <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated Email" name="email" type="email" value=""><i aria-hidden="true" class="mail icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Registration Number</label>
+                            <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Registration Number" name="registrationNumber" type="number" value=""><i aria-hidden="true" class="plus icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Website Name</label>
+                            <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's associated website" name="website" type="text" value=""><i aria-hidden="true" class="circle icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Phone Number</label>
+                            <div class="ui left icon input"><input aria-invalid="true" style="padding: 0;" placeholder="Enter Hospital's Phone Number" name="phoneNumber" type="text" value=""><i aria-hidden="true" class="phone icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Description</label>
+                            <textarea name="description" placeholder="Enter Hopsital Description..."></textarea>
+                        </div>
+                    </div>
+                    <button style="background-color: #379683; color: white;" type="submit" class=" circular ui button">
+                <div class="content">Edit Hospital</div>
+            </button>
+                </form>
+            </div>
+        </div>
+
+        </header>
+
+        <%- include("partials/footer") %>
+            <script src="/dashboardUser.js "></script>
+            </body>
+
+            </html>

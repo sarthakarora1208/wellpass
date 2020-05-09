@@ -1,0 +1,39 @@
+<% if(typeof errors != 'undefined'){ %>
+    <% errors.forEach(function(error) { %>
+        <div class="ui warning message">
+            <i class="close icon"></i>
+            <div class="header">
+                <%= error.msg %>
+            </div>
+        </div>
+        <% }); %>
+            <% } %>
+                <% if(success_msg && success_msg.length>0){ %>
+                    <div class="ui success message">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            <%= success_msg %>
+                        </div>
+                    </div>
+                    <% } %>
+
+                        <% if(error_msg && error_msg.length>0){ %>
+                            <div class="ui negative message">
+                                <i class="close icon"></i>
+                                <div class="header">
+                                    <%= error_msg %>
+                                </div>
+                            </div>
+                            <% } %>
+
+                                <% if(error != ''){ %>
+                                    <div class="ui negative message">
+                                        <i class="close icon"></i>
+                                        <i class="close icon" onclick="() => {
+            $(this).closest('.message').transition('fade');
+        }"></i>
+                                        <div class="header">
+                                            <%= error %>
+                                        </div>
+                                    </div>
+                                    <% } %>

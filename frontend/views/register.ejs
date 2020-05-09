@@ -1,0 +1,115 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/index2.css" />
+    <%- include("partials/navbar") %>
+        <!-- FORM -->
+        <div class="form1" style="margin: 20px;">
+            <div class="ui raised segment dimmable">
+                <%- include("partials/messages") %>
+                    <div class="ui inverted dimmer">
+                        <div class="content">
+                            <div class="ui text loader">Loading</div>
+                        </div>
+                    </div>
+                    <h2 class="ui header"><i aria-hidden="true" style="color: #379683;" class="user icon"></i>Register</h2>
+                    <p style="color: black;"> Welcome to WellPass, register as a user or a hospital owner </p>
+                    <div class="ui divider"></div>
+                    <form id="myForm" action="/auth/register" method="POST" class="ui form">
+                        <div class="field">
+                            <div class="field"><label class="ui header">Name</label>
+                                <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Enter Full Name" name="name" type="text" value="<%= typeof name !== 'undefined' ? name : '' %>" required><i aria-hidden="true" class="user icon"></i></div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field"><label class="ui header">Email Address</label>
+                                <div class="ui left icon input"><input id="email" style="padding: 0;" aria-invalid="true" placeholder="Enter Email" name="email" type="email" value="<%= typeof email !== 'undefined' ? email : '' %>" required><i aria-hidden="true" class="mail icon"></i></div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field"><label class="ui header">Password</label>
+                                <div class="ui left icon input"><input id="pwd" style="padding: 0;" aria-invalid="true" placeholder="Enter Password" name="password" type="password" value="<%= typeof password != 'undefined' ? password : '' %>" required><i aria-hidden="true" class="lock icon"></i></div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field"><label class="ui header">Confirm Password</label>
+                                <div class="ui left icon input"><input style="padding: 0;" aria-invalid="true" placeholder="Re-enter Password" name="passwordConfirmation" type="password" value="<%= typeof passwordConfirmation != 'undefined' ? passwordConfirmation : '' %>" required>
+                                    <i aria-hidden="true" class="lock icon"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field ui header" style="color: black;"><b>User Role</b></div>
+                        <div class="inline fields">
+                            <div class="field">
+                                <div class="ui checked radio checkbox"><input id="user" name="role" type="radio" value="user" checked=""><label for="user">User</label></div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox"><input id="owner" name="role" type="radio" value="owner"><label for="Owner">Hospital Owner</label></div>
+                            </div>
+                            <!-- <div class="field">
+                            <div class="ui radio checkbox"><input id="admin" name="role" type="radio" value="admin"><label for="Admin">Admin</label></div>
+                        </div> -->
+                        </div>
+                        <div class="field">
+                            <div class="field">
+                                <div class="ui checkbox"><input id="box" type="checkbox"><label for="privKey"><i style="color: red;"
+                                class="key icon"></i> Already have a <span style="color: red;">PRIVATE KEY</span>
+                            ?</label></div>
+                            </div>
+                        </div>
+                        <div id="privField" style="display: none;" class="field">
+                            <div class="field"><label class="ui header">Private Key</label>
+                                <div class="ui left icon input"><input id="privKey" style="padding: 0;" aria-invalid="true" placeholder="Enter Pivate key" name="privKey" type="text" value=""><i aria-hidden="true" class="key icon"></i></div>
+                            </div>
+
+                        </div>
+                        <input id="publicKey" type="hidden" aria-invalid="true" name="publicKey" type="text" value="">
+                        <br>
+                        <div style="background-color:#379683; color: white;" onclick="register()" class="circular ui button">
+                            Generate Keys</div>
+
+                        <p style="color: black;">Already have an account? <a style="color:#379683;" href="/auth/login"> Login</a>
+                        </p>
+            </div>
+
+
+
+            <div style="margin: 0 auto;" class="ui basic modal">
+                <div class="ui icon header">
+                    <i class="hospital icon"></i> YOUR <span style="color:gold;">KEYS</span>
+                </div>
+                <div style="text-align: center;" class="content">
+                    <p>These are your keys please take a screenshot <i style="color:#5CDB95;" class="camera icon"></i>and store them securely for future reference.</p>
+                    <div style="color: red;">
+                        <h6>They will not be showed again!</h6>
+                    </div>
+                    <br>
+                    <label style="color: rgb(60, 241, 130)" class="ui header">Private Key</label>
+                    <p id="privateKeyDisplay"></p>
+                    <label style="color: rgb(60, 241, 130)" class="ui header">Address</label>
+                    <p id="address"></p>
+                </div>
+                <div style="text-align: center;" class="actions">
+                    <button class="ui green basic ok inverted  button" onclick="formSubmit()"><i
+                    class="checkmark icon"></i>Register</button>
+                </div>
+
+
+            </div>
+            </form>
+        </div>
+        </div>
+
+
+        </header>
+
+        <%- include("partials/footer") %>
+            <script>
+                $('.message .close').on('click', function() {
+                    $(this).closest('.message').transition('fade');
+                });
+            </script>
+            <script src="/bundle.js"></script>
+            <script src="/hospitalRegister.js"></script>
+
+            </body>
+
+            </html>

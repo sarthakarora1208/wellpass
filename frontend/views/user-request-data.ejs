@@ -1,0 +1,48 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar2") %>
+
+        <!-- FORM -->
+        <div class="form1">
+            <div class="ui raised segment dimmable">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="ui text loader">Loading</div>
+                    </div>
+                </div>
+                <h2 class="ui header"><i style="color:#379683;" aria-hidden="true" class="plus icon"></i>Reguest your data</h2>
+                <p style="color: black;">Hey,
+                    <%= user.name%> Get your COVID'19 data</p>
+                <div class="ui divider"></div>
+                <form style="min-width: 400px;" action="/users/request-data" method="POST" class="ui form" id="request-data-from">
+                    <div class="field">
+                        <div class="field"><label class="ui header">Comment</label>
+                            <textarea placeholder="Enter comments" name="comment"></textarea>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="field"><label class="ui header">Hospital Name</label>
+                            <select class="ui fluid dropdown" name="hospitalId" id="request-data-form">
+                        <% hospitals.map(hospital => { %>
+                        <option value="<%=hospital.id%>">
+                            <%= hospital.name %>
+                        </option>
+                        <%})%>
+                    </select>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <button style="margin: 0 auto; width: 100%; background-color: #379683; color: white;" type="submit" class=" circular ui button">
+                <div class="content">Request Data</div>
+            </button>
+                </form>
+            </div>
+        </div>
+
+        </header>
+
+        <%- include("partials/footer") %>
+            <script src="/dashboardUser.js "></script>
+            </body>
+
+            </html>

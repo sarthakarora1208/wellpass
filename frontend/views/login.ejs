@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/index2.css" />
+    <%- include("partials/navbar") %>
+        <!-- FORM -->
+        <div class="form1" style="margin-top: 20px;">
+            <div class="ui raised segment dimmable">
+                <%- include("partials/messages") %>
+                    <div class="ui inverted dimmer">
+                        <div class="content">
+                            <div class="ui text loader">Loading</div>
+                        </div>
+                    </div>
+                    <h2 style="letter-spacing: 0.1em;" class="ui header"><i aria-hidden="true" style="color: #379683;" class="user icon"></i>Login</h2>
+                    <p style="color: black;"> Log in to make a request for your data and check the updates.</p>
+                    <div class="ui divider"></div>
+                    <form id="myForm" action="/auth/login" method="POST" class="ui form">
+                        <div class="field">
+                            <div class="field"><label class="ui header">Email Address</label>
+                                <div class="ui left icon input"><input id="email" aria-invalid="true" style="padding: 0;" placeholder="Enter Email" name="email" type="text" value="<%= typeof email !== 'undefined' ? email : '' %>"><i aria-hidden="true" class="mail icon"></i></div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="field"><label class="ui header">Password</label>
+                                <div class="ui action left icon input"><input id="pwd" aria-invalid="true" style="padding: 0;" placeholder="Enter Password" name="password" type="password" value="<%= typeof password !== 'undefined' ? password : '' %>">
+                                    <i aria-hidden="true" class="lock icon"></i>
+
+                                    <button class="ui icon button" id="eye">
+                            <i aria-hidden="true" class="eye icon"></i>
+                        </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background-color:#379683; color: white;" onclick="onformSubmit()" class=" circular ui button">
+                            Login</div>
+                    </form>
+                    <div class="ui divider"></div>
+                    <p> <a style="color:#379683;" href="#">Forgot Password? </a></p>
+                    <p style="color: black;">Don't have an account? <a style="color:#379683;" href="/auth/register">Sign up</a></p>
+            </div>
+        </div>
+        </header>
+
+
+        <%- include("partials/footer") %>
+            <script>
+                $('.message .close').on('click', function() {
+                    $(this).closest('.message').transition('fade');
+                });
+            </script>
+            <script src="/bundle.js"></script>
+            <script src="/login.js"></script>
+            </body>
+
+            </html>

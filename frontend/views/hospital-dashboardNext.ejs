@@ -1,0 +1,82 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar2") %>
+
+        <div style="margin-top: 50px;font-size: 2.5em; text-align: center;">
+            <h3 class="ml15">
+                <span style="color:#5CDB95; letter-spacing: normal;font-size: 0.5em;" class="word"><%= hospital.name %> </span>
+            </h3>
+            <span style="color:white; letter-spacing: normal;">Status:
+        <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
+        </div>
+        <div class="tab">
+            <%- include("partials/messages") %>
+                <table style="background-color: white; margin: 0 auto; border: 1px solid black; border-radius: 15px;" class="striped centered responsive-table">
+                    <thead>
+                        <tr>
+                            <th style="color: orangered;">Patient Name</th>
+                            <th style="color: #379683;">Status of Request</th>
+                            <th style="color: brown;"> Edit Request</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% if(pdRequests.length === 0) { %>
+                            <tr>
+                                <td>
+                                    No request found!
+                                </td>
+                                <td>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                            <% } %>
+
+                                <% pdRequests.map(pdrequest => { %>
+                                    <tr>
+                                        <td>
+                                            <%= pdrequest.user.name %>
+                                        </td>
+                                        <td>
+                                            <% if(pdrequest.isApproved){%>
+                                                <span style="color:  #379683;">
+                        <i style="color: green;" class="checkmark icon"></i>
+                    </span>
+                                                <% } else{ %>
+                                                    <span style="color: red;">
+                        <i style="color: red;" class="remove icon"></i>
+                    </span>
+                                                    <% } %>
+                                        </td>
+                                        <td>
+                                            <% if(!pdrequest.isApproved) { %>
+                                                <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
+                                                <% } else { %>
+                                                    <span style="color: #379683;">Request Approved!</span>
+                                                    <% } %>
+                                        </td>
+                                    </tr>
+                                    <%})%>
+                    </tbody>
+                </table>
+
+
+
+        </div>
+        </div>
+
+        </header>
+
+        <%- include("partials/footer") %>
+            <script>
+                $('.message .close').on('click', function() {
+                    $(this).closest('.message').transition('fade');
+                });
+            </script>
+            <script src="/bundle.js"></script>
+            <script src="/qrcode.min.js"></script>
+            <script src="/userDashboardNext.js"></script>
+            </body>
+
+            </html>

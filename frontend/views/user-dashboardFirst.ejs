@@ -1,0 +1,25 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar2") %>
+
+        <h1 style="margin-top:150px; font-size: 2.5em; text-align: center;" class="ml15">
+            <span style="color:white; letter-spacing: normal;" class="word">Hello</span>
+            <span style="color:#5CDB95; letter-spacing: normal;" class="word"><%= user.name %></span>
+        </h1>
+        <div class="wrapper">
+            <a style="background-color: #379683; color: white;" href="/users/request-data" class="circular ui large button">Request Data</a>
+        </div>
+        </header>
+
+        <%- include("partials/footer") %>
+            <script>
+                $('.message .close').on('click', function() {
+                    $(this).closest('.message').transition('fade');
+                });
+            </script>
+            <script src="/bundle.js"></script>
+            <script src="/qrcode.min.js"></script>
+            <script src="/userDashboardNext.js"></script>
+            </body>
+
+            </html>

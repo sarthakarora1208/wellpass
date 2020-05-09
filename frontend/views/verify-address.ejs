@@ -1,0 +1,54 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/index2.css" />
+    <%- include("partials/navbar") %>
+        <!-- FORM -->
+        <div class="form1" style="min-width: 300px;">
+            <div id="load" class="ui raised segment dimmable">
+                <div class="ui inverted dimmer">
+                    <div class="content">
+                        <div class="ui text loader">Loading</div>
+                    </div>
+                </div>
+                <h2 class="ui header"><i style="color:#379683" class="home icon"></i>Verify Address</h2>
+                <p style="color: black;">Enter your Address to verify that you are a registered user</p>
+                <div class="ui divider"></div>
+                <form id="myForm" action="/verify" method="GET" class="ui form">
+                    <div class="field">
+                        <div class="field"><label>Address</label>
+                            <div class="ui left icon input"><input id="addr" style="padding: 1%;" aria-invalid="true" placeholder="Enter Your Address" name="address" type="text" value="<%= typeof address !== 'undefined' ? address : '' %>"><i aria-hidden="true" class="key icon"></i></div>
+                        </div>
+                    </div>
+                    <div class="ui divider"></div>
+                    <div onclick="check()" class=" circular ui button" style="background-color: #379683; color: white;">
+                        <div class="content">Verify Address
+                        </div>
+
+                    </div>
+                </form>
+                <div style="margin: 0 auto;" class="ui basic modal mod1">
+                    <div class="ui icon header">
+                        <i style="color: green; font-size: 5em;" class="checkmark icon"></i><span style="font-size: 2em;">Address <span style="color:green">Verified</span></span>
+                    </div>
+                    <div class="actions">
+                        <button onclick='document.getElementById("myForm").submit()' class="circular ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 0 auto;" class="ui basic modal mod2">
+                <div class="ui icon header">
+                    <i style="color:red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Address
+                Verification <span style="color: red;">Failed</span></span>
+                </div>
+                <div class="actions">
+                    <button onclick='document.getElementById("myForm").submit()' class="circular ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
+                </div>
+            </div>
+
+            </header>
+
+            <%- include("partials/footer") %>
+                <script src="/bundle.js"></script>
+                <script src="/verify.js"></script>
+                </body>
+
+                </html>

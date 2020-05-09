@@ -1,0 +1,115 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar2") %>
+
+        <div class="ui dimmer" id="dimmer">
+            <div class="ui massive text loader">
+                <h5>Waiting for your Transaction to be mined....</h5>
+            </div>
+        </div>
+        <!-- <div style="text-align:center; margin-top: 20px;">
+        <a style="background-color:#379683; color: white;" href="https://docs.google.com/spreadsheets/d/1xVVAaP5tRf30eCoVX5UJa5SbRglaeGG3kmxhCvvv5Dc/edit?usp=sharing" class="ui medium circular button">View All Requests</a>
+    </div> -->
+
+        <h3 style="font-size: 2.5em; text-align: center;" class="ml15">
+            <span style="color: red; letter-spacing: normal;" class="word">Unapproved</span>
+            <span style="color: white; letter-spacing: normal;" class="word">Hospitals</span>
+            <%- include("partials/messages") %>
+        </h3>
+        <% hospitals.map(hospital=> { %>
+            <div class="tab">
+                <div style="margin:0 auto; max-width: 350px;  border-radius: 20px;" class="card sticky-action">
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4">
+                <a class="header" style="color: black;" href="<%= hospital.website %>"> <%= hospital.name %></a><i
+                    class="material-icons right">more_vert</i></span>
+                        <div class="meta">
+                            <span class="category"><%= hospital.registrationNumber %></span>
+                        </div>
+                        <div class="address">
+                            <p>
+                                <%= hospital.address %>
+                            </p>
+                        </div>
+                        <div class="phone">
+                            <p>
+                                <%= hospital.phone%>
+                            </p>
+                        </div>
+                        <div class="email">
+                            <p>
+                                <%= hospital.email %>
+                            </p>
+                        </div>
+                    </div>
+                    <div style="border-radius: 20px;" class="card-action">
+                        <p><a href="#">
+                    <button style="background-color:#379683; color: white;" onclick="modshow(this.id)"
+                        id="<%=hospital.publicKey%>" class="circular ui medium button ">Approve Hospital</button>
+                </a></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4"> <%= hospital.name %><i
+                    class="material-icons right">close</i></span>
+                        <br>
+                        <div class="description">
+                            <p>
+                                <%= hospital.description %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin: 0 auto;" class="ui basic modal <%= hospital.publicKey %> first">
+                    <div class="ui icon header ">
+                        <i class="hospital icon "></i> Generate Verification Status
+                    </div>
+                    <div class="content ">
+                        <p style="text-align: center; ">Plase verify the status on the hospital,to allow the hospital to generate well pass.</p>
+                    </div>
+                    <div style="text-align: center; " class="actions ">
+                        <div class="ui red basic cancel inverted button ">
+                            <i class="remove icon "></i> Disapprove
+                        </div>
+                        <div onclick="addHospital(this.id) " id="<%= hospital.publicKey %>" class="ui green basic ok inverted button ">
+                            <i class="checkmark icon "></i> Approve
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 0 auto; " class="ui basic modal <%= hospital.publicKey %> second">
+                    <div class="ui icon header ">
+                        <i style="color: green; font-size: 5em; " class="checkmark icon "></i><span style="font-size: 2em; ">Transaction
+                <span style="color:green ">Confirmed!</span></span>
+                    </div>
+                    <div class="actions ">
+                        <form method="POST" action="/admin/<%= hospital._id %>/approve">
+                            <button type='submit' class="ui red basic ok inverted button "><i
+                        class="remove icon "></i>Close</button>
+                        </form>
+                    </div>
+                </div>
+                <div style="margin: 0 auto;" class="ui basic modal mod <%= hospital.publicKey%> third">
+                    <div class="ui icon header">
+                        <i style="color: red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Transaction
+                <span style="color:red">Failed!</span></span>
+                    </div>
+                    <div class="actions">
+                        <button class="ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+
+                </header>
+
+                <%- include("partials/footer") %>
+                    <script>
+                        $('.message .close').on('click', function() {
+                            $(this).closest('.message').transition('fade');
+                        });
+                    </script>
+                    <script src="/bundle.js"></script>
+                    <script src="/adminDashboard.js"></script>
+                    </body>
+
+                    </html>
