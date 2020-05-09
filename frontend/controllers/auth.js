@@ -1,5 +1,5 @@
-const asyncHandler = require('../../backend/middleware/async');
-const { getMe, login, logout, register, forgotPassword } = require('../../backend/API/authRequests');
+const asyncHandler = require('../middleware/async');
+const { getMe, login, logout, register, forgotPassword } = require('../API/authRequests');
 
 exports.getLogin = asyncHandler(async (req, res, next) => {
 	res.render('login.ejs');

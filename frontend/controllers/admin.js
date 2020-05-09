@@ -1,6 +1,6 @@
-const asyncHandler = require('../../backend/middleware/async');
-const { getUnapprovedHospitals, approveHospital } = require('../../backend/API/hospitalRequests');
-const { getMe } = require('../../backend/API/authRequests');
+const asyncHandler = require('../middleware/async');
+const { getUnapprovedHospitals, approveHospital } = require('../API/hospitalRequests');
+const { getMe } = require('../API/authRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
 	let hospitals = [];

@@ -1,6 +1,6 @@
-const asyncHandler = require('../../backend/middleware/async');
+const asyncHandler = require('./async');
 const jwt = require('jsonwebtoken');
-const { getMe } = require('../../backend/API/authRequests');
+const { getMe } = require('../API/authRequests');
 
 exports.checkIfAuthenticated = asyncHandler(async (req, res, next) => {
 	//console.log("middleware");

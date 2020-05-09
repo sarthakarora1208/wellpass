@@ -1,11 +1,11 @@
-const asyncHandler = require('../../backend/middleware/async');
+const asyncHandler = require('../middleware/async');
 const {
 	getPatientDataRequestForUser,
 	addPatientDataRequest,
 	deletePatientDataRequestById
-} = require('../../backend/API/patientDataRequests');
-const { getApprovedHospitals } = require('../../backend/API/hospitalRequests');
-const { getMe } = require('../../backend/API/authRequests');
+} = require('../API/patientDataRequests');
+const { getApprovedHospitals } = require('../API/hospitalRequests');
+const { getMe } = require('../API/authRequests');
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
 	try {
