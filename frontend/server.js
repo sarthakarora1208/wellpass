@@ -9,16 +9,12 @@ const url = require('url');
 // Load env vars
 dotenv.config({ path: './config/config.env' });
 
-// Route files
-// const auth = require('./routes/auth');
-// const hopsitals = require('./routes/hospitals');
-// const pdRequests = require('./routes/patientDataRequests');
 
-// Frontend Route files
-const authFrontend = require('./routes/auth');
-const userFrontend = require('./routes/user');
-const hospitalFrontend = require('./routes/hospital');
-const adminFrontend = require('./routes/hospital');
+//  Route files
+const auth = require('./routes/auth');
+const user = require('./routes/user');
+const hospital = require('./routes/hospital');
+const admin = require('./routes/admin');
 
 // initialising the app
 const app = express();
@@ -81,10 +77,10 @@ app.get('/auth/hospital-register', (req, res) =>
 );
 
 // Mount routers
-app.use('/auth', authFrontend);
-app.use('/users', userFrontend);
-app.use('/hospitals', hospitalFrontend);
-app.use('/admin', adminFrontend);
+app.use('/auth', auth);
+app.use('/users', user);
+app.use('/hospitals', hospital);
+app.use('/admin', admin);
 
 const PORT = process.env.PORT || 5000;
 

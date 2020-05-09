@@ -10,7 +10,7 @@
                             <div class="ui text loader">Loading</div>
                         </div>
                     </div>
-                    <h2 style="letter-spacing: 0.1em;" class="ui header"><i aria-hidden="true" style="color: #379683;" class="user icon"></i>Login</h2>
+                    <h2 style="letter-spacing: 0.1em;" class="ui header"><i aria-hidden="true" style="color: #5CDB95;" class="user icon"></i>Login</h2>
                     <p style="color: black;"> Log in to make a request for your data and check the updates.</p>
                     <div class="ui divider"></div>
                     <form id="myForm" action="/auth/login" method="POST" class="ui form">
@@ -30,12 +30,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div style="background-color:#379683; color: white;" onclick="onformSubmit()" class=" circular ui button">
+                        <div style="background-color:#5CDB95; color: white;" onclick="onformSubmit()" class=" circular ui button">
                             Login</div>
                     </form>
                     <div class="ui divider"></div>
-                    <p> <a style="color:#379683;" href="#">Forgot Password? </a></p>
-                    <p style="color: black;">Don't have an account? <a style="color:#379683;" href="/auth/user:register">Sign up</a>
+                    <p> <a style="color:#5CDB95;" href="#">Forgot Password? </a></p>
+                    <p style="color: black;">Don't have an account? <a style="color:#5CDB95;" href="/auth/user-register">User Sign up</a>
+                    </p>
+                    <p style="color: black;">Hospital Owner? <a style="color:#5CDB95;" href="/auth/hospital-register">Hospital Sign up</a>
                     </p>
             </div>
         </div>
@@ -49,7 +51,6 @@
                 });
             </script>
             <script src="/bundle.js"></script>
-            <script src="/login.js"></script>
+            <script src="/js/login.js"></script>
             </body>
-
             </html>

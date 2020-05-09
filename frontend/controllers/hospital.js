@@ -1,3 +1,4 @@
+const { HOST_URL } = require('../config/baseURL');
 const asyncHandler = require('../middleware/async');
 const {
 	getPatientDataRequests,
@@ -7,6 +8,14 @@ const {
 } = require('../API/patientDataRequests');
 const { getHospitalForUser, addHospital } = require('../API/hospitalRequests');
 const { getMe } = require('../API/authRequests');
+const { types } = require('@arcblock/mcrypto');
+const {
+  fromRandom,
+  WalletType,
+} = require('@arcblock/forge-wallet');
+const GraphQLClient = require('@arcblock/graphql-client');
+
+
 
 exports.dashboard = asyncHandler(async (req, res, next) => {
 	let pdRequests = [];
@@ -16,16 +25,25 @@ exports.dashboard = asyncHandler(async (req, res, next) => {
 		const userData = await getMe(token);
 		let user = userData.data;
 		let data = await getHospitalForUser(token);
-		// if already has made a request
+		// if already added a hospital
 		if (data.length === 1) {
+			let hospitalHasKeys;
 			const hospital = data[0];
+
+			let cookie = req.cookies[`${hospital.name.split(' ').join("")}-hospital-wallet`]
+
+			if(typeof cookie !== 'undefined'){
+				hospitalHasKeys = true;
+			}
+
 			data = await getPatientDataRequests(hospital.id);
 			pdRequests = [ ...data ];
 
-			res.render('hospital-dashboardNext.ejs', {
+			res.render('hospital-dashboard-next.ejs', {
 				user,
 				pdRequests,
-				hospital
+				hospital,
+				hospitalHasKeys
 			});
 		} else {
 			res.render('hospital-dashboard.ejs', { user });
@@ -76,6 +94,10 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
 
 exports.getAddPatientData = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
+	const {patientPublicKey, data} = req.body;
+	console.log("INSIDE GET PATIENT DATA");
+	console.log(patientPublicKey);
+	console.log(data);k
 	try {
 		const userData = await getMe(req.cookies['token']);
 		let hospitalOwner = userData.data;
@@ -111,4 +133,57 @@ exports.postAddPatientData = asyncHandler(async (req, res, next) => {
 		}
 		res.redirect('/hospitals/dashboard');
 	}
+});
+
+
+exports.getGenerateKeysForHospital = asyncHandler(async (req, res, next) => {
+	const { hospitalName }  = req.params
+    const client = new GraphQLClient({ endpoint: `${HOST_URL}/api` });
+      const sleep = (timeout) =>
+	  new Promise((resolve) => setTimeout(resolve, timeout));
+
+      function registerUser(userName, userWallet) {
+        return client.declare({
+          moniker: userName,
+          wallet: userWallet,
+        });
+      }
+      function getFreeToken(userWallet) {
+        return client.checkin({
+          wallet: userWallet,
+        });
+      }
+
+      const options = {
+        expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+        httpOnly: true,
+      };
+
+      if (process.env.NODE_ENV === 'production') {
+        options.secure = true;
+      }
+      const type = WalletType({
+        role: types.RoleType.ROLE_ACCOUNT,
+        pk: types.KeyType.ED25519,
+        hash: types.HashType.SHA3,
+	  });
+
+	  const hospitalWallet = fromRandom(type);
+
+	  let hash = await registerUser(hospitalName,hospitalWallet);
+
+      console.log('Wallet is');
+      console.log(hospitalWallet.toJSON());
+      console.log('\n')
+      console.log('Hash is' + hash);
+	  console.log('\n')
+
+	  await getFreeToken(hospitalWallet)
+
+	  await sleep(3000);
+
+	  const {sk,pk,address} = hospitalWallet.toJSON();
+
+      res.cookie(`${hospitalName}-hospital-wallet`, hospitalWallet.toJSON().sk, options).render('display-keys',{privateKey:sk, publicKey: pk, address });
+
 });

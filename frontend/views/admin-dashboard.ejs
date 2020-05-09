@@ -45,7 +45,7 @@
                     <div style="border-radius: 20px;" class="card-action">
                         <p><a href="#">
                     <button style="background-color:#379683; color: white;" onclick="modshow(this.id)"
-                        id="<%=hospital.publicKey%>" class="circular ui medium button ">Approve Hospital</button>
+                        id="<%=hospital._id %>" class="circular ui medium button ">Approve Hospital</button>
                 </a></p>
                     </div>
                     <div class="card-reveal">
@@ -60,26 +60,27 @@
                     </div>
                 </div>
 
-                <div style="margin: 0 auto;" class="ui basic modal <%= hospital.publicKey %> first">
+                <div style="margin: 0 auto;" class="ui basic modal <%= hospital._id %> first">
                     <div class="ui icon header ">
-                        <i class="hospital icon "></i> Generate Verification Status
+                        <i class="hospital icon "></i> Verify Hospital?
                     </div>
                     <div class="content ">
-                        <p style="text-align: center; ">Plase verify the status on the hospital,to allow the hospital to generate well pass.</p>
+                        <p style="text-align: center; ">Please verify the status on the hospital,to allow the hospital to generate well pass.</p>
                     </div>
                     <div style="text-align: center; " class="actions ">
                         <div class="ui red basic cancel inverted button ">
                             <i class="remove icon "></i> Disapprove
                         </div>
-                        <div onclick="addHospital(this.id) " id="<%= hospital.publicKey %>" class="ui green basic ok inverted button ">
+                        <div onclick="addHospital(this.id) " id="<%= hospital._id %>" class="ui green basic ok inverted button ">
                             <i class="checkmark icon "></i> Approve
                         </div>
                     </div>
                 </div>
-                <div style="margin: 0 auto; " class="ui basic modal <%= hospital.publicKey %> second">
+                <div style="margin: 0 auto; " class="ui basic modal <%= hospital._id %> second">
                     <div class="ui icon header ">
-                        <i style="color: green; font-size: 5em; " class="checkmark icon "></i><span style="font-size: 2em; ">Transaction
-                <span style="color:green ">Confirmed!</span></span>
+                        <i style="color: green; font-size: 5em; " class="checkmark icon "></i><span style="font-size: 2em; ">
+                            <%= hospital.name %>
+                <span style="color:green ">verified successfully!</span></span>
                     </div>
                     <div class="actions ">
                         <form method="POST" action="/admin/<%= hospital._id %>/approve">
@@ -88,10 +89,10 @@
                         </form>
                     </div>
                 </div>
-                <div style="margin: 0 auto;" class="ui basic modal mod <%= hospital.publicKey%> third">
+                <div style="margin: 0 auto;" class="ui basic modal mod <%= hospital._id%> third">
                     <div class="ui icon header">
-                        <i style="color: red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Transaction
-                <span style="color:red">Failed!</span></span>
+                        <i style="color: red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em;">Couldn't
+                <span style="color:red">Add hospital</span></span>
                     </div>
                     <div class="actions">
                         <button class="ui red basic ok inverted button"><i class="remove icon"></i>Close</button>
@@ -109,7 +110,7 @@
                         });
                     </script>
                     <script src="/bundle.js"></script>
-                    <script src="/adminDashboard.js"></script>
+                    <script src="/js/adminDashboard.js"></script>
                     </body>
 
                     </html>

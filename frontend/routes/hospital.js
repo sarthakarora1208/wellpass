@@ -4,6 +4,7 @@ const {
 	getAddPatientData,
 	postAddHospital,
 	postAddPatientData,
+	getGenerateKeysForHospital,
 	dashboard
 } = require('../controllers/hospital');
 // require('../../controllers/frontend/hospitalFrontend');
@@ -14,7 +15,10 @@ const router = express.Router();
 
 router.route('/dashboard').get(checkIfAuthenticated, dashboard);
 
+
 router.route('/add-hospital').get(checkIfAuthenticated, getAddHospital).post(postAddHospital);
+
+router.route('/:hospitalName/generate-keys').get(checkIfAuthenticated, getGenerateKeysForHospital);
 
 router.route('/:id/add-patient-data').get(checkIfAuthenticated, getAddPatientData).post(postAddPatientData);
 

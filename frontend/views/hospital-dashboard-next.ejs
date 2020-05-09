@@ -10,8 +10,9 @@
         <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
         </div>
         <div style="text-align: center; padding-top: 30px;">
-            <%- hospital.isApproved  ? '<a href="/display-keys" class="ui circular huge green button right-align">Generate Keys</a>': "" %>
-
+            <% if(hospital.isApproved && !hospitalHasKeys) { %>
+                 <a href='/hospitals/<%= hospital.name.split(' ').join("") %>/generate-keys' class="ui circular huge green button right-align">Generate Keys</a>
+            <% } %>
         </div>
 
         <div class="tab">
@@ -29,15 +30,16 @@
                         <% if(pdRequests.length === 0) { %>
                             <tr>
                                 <td>
-                                    No request found!
+                                    No found!
                                 </td>
                                 <td>
+                                    request
                                 </td>
                                 <td>
                                 </td>
                             </tr>
                             <% } %>
-
+                            <% if(hospital.isApproved) { %>
                                 <% pdRequests.map(pdrequest => { %>
                                     <tr>
                                         <td>
@@ -46,23 +48,24 @@
                                         <td>
                                             <% if(pdrequest.isApproved){%>
                                                 <span style="color:  #379683;">
-                        <i style="color: green;" class="checkmark icon"></i>
-                    </span>
+                                                   <i style="color: green;" class="checkmark icon"></i>
+                                                </span>
                                                 <% } else{ %>
                                                     <span style="color: red;">
-                        <i style="color: red;" class="remove icon"></i>
-                    </span>
-                                                    <% } %>
+                                                        <i style="color: red;" class="remove icon"></i>
+                                                    </span>
+                                                <% } %>
                                         </td>
                                         <td>
                                             <% if(!pdrequest.isApproved) { %>
                                                 <a href="/hospitals/<%= pdrequest._id %>/add-patient-data"><i class="pencil icon"></a></i>
                                                 <% } else { %>
                                                     <span style="color: #379683;">Request Approved!</span>
-                                                    <% } %>
+                                            <% } %>
                                         </td>
                                     </tr>
                                     <%})%>
+                                <% } %>
                     </tbody>
                 </table>
 

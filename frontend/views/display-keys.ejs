@@ -13,41 +13,37 @@
             </div>
             <div style="text-align: center;" class="content">
                 <p style="color: aliceblue;">These are your keys please take a screenshot <i style="color:#5CDB95;" class="camera icon"></i>and store them securely for future reference.</p>
-                <div style="color: red;">
-                    <h6>They will not be showed again!</h6>
-                </div>
                 <br>
                 <label style="color: rgb(60, 241, 130)" class="ui header">
             <h3>Private Key</h3>
         </label>
-                <h4 style="color: aliceblue;" id="privateKeyDisplay">private key here!</h4>
+                <h6 style="color: aliceblue;" id="privateKeyDisplay"><%= privateKey %></h6>
                 <label style="color: rgb(60, 241, 130)" class="ui header">
             <h3>Public Key</h3>
         </label>
-                <h4 style="color: aliceblue;" id="publicKeyDisplay">public key here!</h4>
+                <h6 style="color: aliceblue;" id="publicKeyDisplay"><%= publicKey %></h6>
                 <label style="color: rgb(60, 241, 130)" class="ui header">
             <h3>Address</h3>
         </label>
-                <h4 style="color: aliceblue;" id="address">address key here!</h4>
+                <h6 style="color: aliceblue;" id="address"><%= address %></h6>
             </div>
             <div style=" margin: 40px;" class="actions">
-                <a href="/auth/login" class="ui circular green basic inverted  button">
-                    <iclass="checkmark icon">
-                        </i>Go back to login!
+                <a href="/hospitals/dashboard" class="ui circular green basic inverted  button">
+                    <i class="checkmark icon">
+                        </i>Dashboard
                 </a>
             </div>
         </div>
 
 
-        <%- include("partials/footer") %>
-            <script>
-                $('.message .close').on('click', function() {
-                    $(this).closest('.message').transition('fade');
-                });
-            </script>
-            <script src="/bundle.js"></script>
-            <script src="/hospitalRegister.js"></script>
+<%- include("partials/footer") %>
+    <script>
+        $('.message .close').on('click', function() {
+            $(this).closest('.message').transition('fade');
+        });
+    </script>
+    <script src="/bundle.js"></script>
 
-            </body>
+    </body>
 
-            </html>
+    </html>

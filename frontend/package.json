@@ -8,6 +8,10 @@
     "server": "nodemon server"
   },
   "dependencies": {
+    "@arcblock/forge-util": "^1.2.13",
+    "@arcblock/forge-wallet": "^1.2.13",
+    "@arcblock/graphql-client": "^1.2.13",
+    "@arcblock/mcrypto": "^1.2.13",
     "axios": "^0.19.2",
     "colors": "^1.4.0",
     "connect-flash": "^0.1.1",
