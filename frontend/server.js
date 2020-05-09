@@ -73,6 +73,7 @@ app.get('/patient-data-success', (req, res) => res.render('patient-data-success'
 app.get('/patient-data-failure', (req, res) => res.render('patient-data-failure'));
 app.get('/auth/user:register', (req, res) => res.render('user:register'));
 app.get('/auth/hospital:register', (req, res) => res.render('hospital:register'));
+app.get('/display-keys', (req, res) => res.render('display-keys'));
 
 // Mount routers
 app.use('/auth', authFrontend);

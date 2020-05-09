@@ -9,6 +9,11 @@
             <span style="color:white; letter-spacing: normal;">Status:
         <%= hospital.isApproved  ? "Approved": "Approval Pending" %></span>
         </div>
+        <div style="text-align: center; padding-top: 30px;">
+            <%- hospital.isApproved  ? '<a href="/display-keys" class="ui circular huge green button right-align">Generate Keys</a>': "" %>
+
+        </div>
+
         <div class="tab">
             <%- include("partials/messages") %>
                 <table style="background-color: white; margin: 0 auto; border: 1px solid black; border-radius: 15px;" class="striped centered responsive-table">

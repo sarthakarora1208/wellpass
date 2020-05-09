@@ -1,0 +1,53 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/index2.css" />
+    <%- include("partials/navbar") %>
+        <style>
+            body {
+                background-color: rgb(6, 6, 39);
+            }
+        </style>
+
+        <div style="text-align: center; margin: 30px;">
+            <div style="color: aliceblue;" class="ui icon header">
+                <i class="hospital icon"></i> YOUR <span style="color:gold;">KEYS</span>
+            </div>
+            <div style="text-align: center;" class="content">
+                <p style="color: aliceblue;">These are your keys please take a screenshot <i style="color:#5CDB95;" class="camera icon"></i>and store them securely for future reference.</p>
+                <div style="color: red;">
+                    <h6>They will not be showed again!</h6>
+                </div>
+                <br>
+                <label style="color: rgb(60, 241, 130)" class="ui header">
+            <h3>Private Key</h3>
+        </label>
+                <h4 style="color: aliceblue;" id="privateKeyDisplay">private key here!</h4>
+                <label style="color: rgb(60, 241, 130)" class="ui header">
+            <h3>Public Key</h3>
+        </label>
+                <h4 style="color: aliceblue;" id="publicKeyDisplay">public key here!</h4>
+                <label style="color: rgb(60, 241, 130)" class="ui header">
+            <h3>Address</h3>
+        </label>
+                <h4 style="color: aliceblue;" id="address">address key here!</h4>
+            </div>
+            <div style=" margin: 40px;" class="actions">
+                <a href="/auth/login" class="ui circular green basic inverted  button">
+                    <iclass="checkmark icon">
+                        </i>Go back to login!
+                </a>
+            </div>
+        </div>
+
+
+        <%- include("partials/footer") %>
+            <script>
+                $('.message .close').on('click', function() {
+                    $(this).closest('.message').transition('fade');
+                });
+            </script>
+            <script src="/bundle.js"></script>
+            <script src="/hospitalRegister.js"></script>
+
+            </body>
+
+            </html>
