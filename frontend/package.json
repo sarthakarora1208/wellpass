@@ -8,6 +8,7 @@
     "server": "nodemon server"
   },
   "dependencies": {
+    "@arcblock/did": "^1.2.13",
     "@arcblock/forge-util": "^1.2.13",
     "@arcblock/forge-wallet": "^1.2.13",
     "@arcblock/graphql-client": "^1.2.13",
