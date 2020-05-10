@@ -88,7 +88,6 @@
                         </div>
                     </div>
                     <input id="email" aria-invalid="true" style="padding: 0;" placeholder="Email" name="email" type="hidden" value="<%= owner.email %>" type="hidden">
-                    <input id="patientAddress" name="patientAddress" type="hidden" value="<%= patientAddress %>" >
                     <div class="ui divider"></div>
                     <div style="background-color:#379683; color: white;" id="tranbtn" onclick="createReport()" class="circular ui button">
                         <div class="content">Add data</div>
@@ -110,10 +109,10 @@
                     </div>
                 </div>
                 <div style="text-align: center;" class="actions">
-                    <button class="ui pink basic ok inverted  button" onclick="addData()"><i class="checkmark icon"></i>Proceed</button>
-                    <form action="/hospitals/<%= id %>/add-patient-data" method="POST" id="patientDataForm">
-                        <input type="hidden" value="<%= user.publicKey %>" name="patientPublicKey" />
-                        <input type="hidden" value="" name='data' id="report-data"/>
+                    <form action="/hospitals/<%= hospital.name.split(' ').join("") %>/<%= id %>/add-patient-data" method="POST" id="patientDataForm">
+                        <input type="hidden" value="<%= patientAddress %>" name="patientAddress" id="patientAddress"/>
+                        <input type="hidden" value="" name='data' id="data"/>
+                        <button class="ui pink basic ok inverted button" type="submit"><i class="checkmark icon"></i>Proceed</button>
                     </form>
                 </div>
             </div>

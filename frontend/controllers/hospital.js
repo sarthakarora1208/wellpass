@@ -12,6 +12,8 @@ const { types } = require('@arcblock/mcrypto');
 const {
   fromRandom,
   WalletType,
+  fromPublicKey,
+  fromSecretKey
 } = require('@arcblock/forge-wallet');
 const GraphQLClient = require('@arcblock/graphql-client');
 
@@ -94,23 +96,22 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
 
 exports.getAddPatientData = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
-	const {patientPublicKey, data} = req.body;
-	console.log("INSIDE GET PATIENT DATA");
-	console.log(patientPublicKey);
-	console.log(data);k
+
 	try {
 		const userData = await getMe(req.cookies['token']);
 		let hospitalOwner = userData.data;
 		console.log(hospitalOwner);
 		const data = await getPatientDataRequestById(id);
 		const { user, comment, hospital } = data;
-		console.log('');
+		const patientWallet = fromPublicKey(user.publicKey);
+		const patientAddress = patientWallet.toJSON().address;
 		res.render('add-patient-data.ejs', {
 			id,
 			user,
 			comment,
 			hospital,
-			owner: hospitalOwner
+			owner: hospitalOwner,
+			patientAddress
 		});
 	} catch (error) {
 		if (error.response) {
@@ -121,12 +122,46 @@ exports.getAddPatientData = asyncHandler(async (req, res, next) => {
 });
 
 exports.postAddPatientData = asyncHandler(async (req, res, next) => {
-	const { id } = req.params;
+	const { hospitalName,id } = req.params;
+	console.log(hospitalName)
 	console.log(id);
+	const {patientAddress, data} = req.body;
+	console.log("INSIDE GET PATIENT DATA");
+	console.log(patientAddress);
+	console.log(data);
 	try {
-		const data = await approvePatientDataRequest(id, req.cookies['token']);
+		const secretKey = req.cookies[`${hospitalName}-hospital-wallet`];
+		const hospitalWallet = fromSecretKey(secretKey);
+		console.log(hospitalWallet.toJSON());
+		let assetAddress;
+		let hash;
+
+		[hash, assetAddress] = await client.createAsset({
+			moniker: `${hospitalName}`,
+			data: {
+			  typeUrl: 'json',
+			  value: {
+				sn: Math.random(), // To make this asset uniq every time this script runs
+				report: data,
+			  },
+			},
+			wallet: hospitalWallet,
+			readonly: true,
+		  });
+		hash = await client.transfer({
+			to: patientAddress,
+			assets: [assetAddress],
+			wallet: hospitalWallet,
+			memo: 'sending in patient data',
+		});
+		console.log('view transfer tx', `${host}/node/explorer/txs/${hash}`);
+		await sleep(3000);
+		let { state } = await client.getAssetState({ address: assetAddress });
+		console.log('asset state', state);
+
+		await approvePatientDataRequest(id, req.cookies['token']);
 		req.flash('success_msg', 'Request approved for patient');
-		res.redirect('/hospitals/dashboard');
+		res.render('patient-data-success',);
 	} catch (error) {
 		if (error.response) {
 			req.flash('error_msg', error.response.data.error);

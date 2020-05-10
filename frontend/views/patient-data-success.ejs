@@ -12,28 +12,21 @@
             <div style="margin:0 auto; max-width: 450px; border-radius: 20px;" class="card sticky-action">
                 <div class="card-content">
                     <div class="card-title activator grey-text text-darken-4">
-                        <span class="header" style="color: black;"> User's Name</span>
-                        <i class="material-icons right">more_vert</i>
+                        <span class="header" style="color: black;"></span>
                     </div>
                     <br>
                     <div class="address">
-                        <div style="font-size: 1.2em;"> Asset Address:</div>
-                        <br />
-                        <div style="color: #379683;text-align: right;">Address Key</div>
+                        <div style="font-size: 1em;"> Asset Address: <%= assetAddress %></div>
                     </div>
                     <br>
                     <div class="address">
-                        <div style="font-size: 1.2em;"> IPFS URL:</div>
-                        <br />
-                        <div style="color: #379683;text-align: right;">url</div>
+                    <div style="font-size: 1em;"> View Report: <%= ipfsURL %></div>
                     </div>
                     <br>
                     <div style="border-radius: 20px; text-align: center;" class="card-action">
-                        <a href="#">
-                            <button type="submit" class="ui circular huge green labeled icon button">
-                        <i class="plus icon"></i> Go back to dashoboard!
+                    <button href="/hospitals/dashoboard" class="ui circular green labeled icon button">
+                        <i class="plus icon"></i> Dashboard
                     </button>
-                        </a>
                     </div>
                 </div>
                 <div class="card-reveal">

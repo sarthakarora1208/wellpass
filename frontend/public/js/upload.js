@@ -11,8 +11,8 @@ const ipfs = window.IpfsHttpClient({
     port: 5001,
     protocol: "https",
 });
-const reportDataElement = document.getElementById('report-data');
-
+const reportDataElement = document.getElementById('data');
+const patientAddressElement = document.getElementById('patientAddress')
 async function createReport() {
 	var img = document.getElementById("imgFile").files[0];
 	if(img){
@@ -45,10 +45,10 @@ async function createReport() {
 					symptoms: symptoms,
 					email: patientEmail,
 					comments: comments,
-					address: addr,
+					address: patientAddressElement.value,
 					ipfsURL: ipfsURL
-			};
-			encryptt(await report);
+            };
+            reportDataElement.value = JSON.stringify(report);
 		};
         reader.readAsArrayBuffer(img);
 
@@ -58,42 +58,10 @@ async function createReport() {
 	}
 
 }
-async function submitReport(report){
-    // encrypt report;
-    reportDataElement.value = JSON.stringify(report);
-    console.log(reportDataElement.value);
-    document.getElementById("patientDataForm").submit();
-
-}
+//async function submitReport(report){
 
 
+ //   document.getElementById("patientDataForm").submit();
 
-function addData(email) {
+//}
 
-	var pwd = document.getElementById('pwd').value;
-	var email = document.getElementById('email').value;
-	console.log(email);
-	console.log(pwd);
-
-	web3.eth.accounts.wallet.load(pwd,email); //hardcoded email but fetch email from database
-	console.log(web3.eth.accounts.wallet[0])
-	//Signing and sending the transaction
-
-	web3.eth.accounts.signTransaction(tx, web3.eth.accounts.wallet[0].privateKey).then((signed) => {
-		web3.eth
-			.sendSignedTransaction(signed.rawTransaction)
-			.on('receipt', (i) => {
-				console.log(i);
-				$('#dimmer').dimmer('hide');
-				$('.ui.basic.modal.mod2').modal('show');
-			}) // this means transaction sent
-			.on('error', (i) => {
-				console.log(i);
-				$('#dimmer').dimmer('hide');
-				$('.ui.basic.modal.mod3').modal('show');
-			}); // do the redirects now
-	});
-	$('#dimmer').dimmer('show');
-}
-
-console.log(ipfs);
