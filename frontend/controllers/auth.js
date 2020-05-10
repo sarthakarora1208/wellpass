@@ -73,7 +73,7 @@ exports.getUserRegister = asyncHandler(async (req, res, next) => {
 });
 
 exports.getHospitalOwnerRegister = asyncHandler(async (req, res, next) => {
-  res.render('hospital-register.ejs');
+  res.render('hospital-register');
 });
 
 exports.postRegister = asyncHandler(async (req, res, next) => {
@@ -220,4 +220,22 @@ exports.getLogout = asyncHandler(async (req, res, next) => {
     res.redirect('/auth/login');
   }
   //let data = await
+});
+exports.postVerifyAddress = asyncHandler(async (req, res, next) => {
+  const client = new GraphQLClient({ endpoint: `${HOST_URL}/api` });
+  try{
+     const assetsList = await client.listAssets({
+       ownerAddress: userAddress,
+    });
+    const asset = assetsList.assets[0]
+    res.render('verification-successful',{userAddress ,ownerAddress,assetAddress})
+
+  } catch (err){
+    if (error.response) {
+      req.flash('error_msg', error.response.data.error);
+    }
+    res.render('verification-failed');
+
+  }
+
 });

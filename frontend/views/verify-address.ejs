@@ -12,18 +12,18 @@
                 <h2 class="ui header"><i style="color:#379683" class="home icon"></i>Verify Address</h2>
                 <p style="color: black;">Enter your Address to verify that you are a registered user</p>
                 <div class="ui divider"></div>
-                <form id="myForm" action="/verify" method="GET" class="ui form">
+                <form id="myForm" action="/verify" method="POST" class="ui form">
                     <div class="field">
                         <div class="field"><label>Address</label>
                             <div class="ui left icon input"><input id="addr" style="padding: 1%;" aria-invalid="true" placeholder="Enter Your Address" name="address" type="text" value="<%= typeof address !== 'undefined' ? address : '' %>"><i aria-hidden="true" class="key icon"></i></div>
                         </div>
                     </div>
                     <div class="ui divider"></div>
-                    <div class=" circular ui button" style="background-color: #379683; color: white;">
+                    <button class=" circular ui button" style="background-color: #379683; color: white;" type="submit" >
                         <div class="content">Verify Address
-                        </div>
-
                     </div>
+
+                </button>
                 </form>
                 <div style="margin: 0 auto;" class="ui basic modal mod1">
                     <div class="ui icon header">

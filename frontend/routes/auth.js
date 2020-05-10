@@ -6,6 +6,7 @@ const {
   getUserRegister,
   getHospitalOwnerRegister,
   postRegister,
+  postVerifyAddress,
   getForgotPassword,
   getLogout,
 } = require('../controllers/auth');
@@ -17,9 +18,10 @@ router.route('/login').get(getLogin).post(postLogin);
 router.route('/register').get(getRegister).post(postRegister);
 router.route('/forgot-pasword').get(getForgotPassword);
 router.route('/logout').get(getLogout);
-router.route('/auth/user-register').get(getUserRegister)
+router.route('/user-register').get(getUserRegister)
 router
-  .route('/auth/hospital-register')
+  .route('/hospital-register')
   .get(getHospitalOwnerRegister)
+router.route('/verified-address').post(postVerifyAddress);
 
 module.exports = router;

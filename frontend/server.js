@@ -65,16 +65,7 @@ app.get('/verify', (req, res) => {
 });
 app.get('/qrscanner', (req, res) => res.render('qrscanner'));
 app.get('/contactUs', (req, res) => res.render('contactUs'));
-app.get('/patient-data-success', (req, res) =>
-  res.render('patient-data-success')
-);
-app.get('/patient-data-failure', (req, res) =>
-  res.render('patient-data-failure')
-);
-app.get('/auth/user-register', (req, res) => res.render('user-register'));
-app.get('/auth/hospital-register', (req, res) =>
-  res.render('hospital-register')
-);
+
 
 // Mount routers
 app.use('/auth', auth);

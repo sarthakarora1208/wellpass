@@ -21,6 +21,7 @@ router.route('/add-hospital').get(checkIfAuthenticated, getAddHospital).post(pos
 router.route('/:hospitalName/generate-keys').get(checkIfAuthenticated, getGenerateKeysForHospital);
 
 router.route('/:id/add-patient-data').get(checkIfAuthenticated, getAddPatientData);
+
 router.route('/:hospitalName/:id/add-patient-data').post(postAddPatientData);
 
 module.exports = router;
