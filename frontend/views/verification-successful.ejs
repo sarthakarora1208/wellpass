@@ -1,0 +1,59 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar") %>
+        <div style="text-align: center; margin: 30px;">
+            <div class="ui icon header">
+                <i style="color: rgb(22, 238, 22); font-size: 5em;" class="checkmark icon"></i><span style="font-size: 2em; color: aliceblue;"> Address
+            <span style="color:rgb(25, 221, 25)">Verified!</span></span>
+            </div>
+        </div>
+        <form style="min-width: 300px;" action="#" method="POST">
+
+            <div style="margin:0 auto; max-width: 450px; border-radius: 20px;" class="card sticky-action">
+                <div class="card-content">
+                    <div class="card-title activator grey-text text-darken-4">
+                        <span class="header" style="color: black;"></span>
+                    </div>
+                    <br>
+                    <div class="address">
+                        <div style="font-size: 1em;color: blue"> Asset Address: </div>
+                        <div><%= assetAddress %></div>
+                    </div>
+                    <br>
+                    <div class="address">
+                        <div style="font-size: 1em;color: blue"> Patient Address:</div>
+                        <div> <%= userAddress%></div>
+                    </div>
+                    <br>
+                    <div class="address">
+                        <div style="font-size: 1em;color: blue"> Hospital Address: </div>
+                        <div><%= hospitalAddress%></div>
+                   </div>
+                   <br>
+                   <div class="address">
+                        <div style="font-size: 1em;color: blue"> Time: </div>
+                        <div><%= time%></div>
+                    </div>
+                    <br>
+                    <div style="border-radius: 20px; text-align: center;" class="card-action">
+
+                    </div>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4">User's Name<i class="material-icons right">close</i></span>
+                    <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                </div>
+            </div>
+        </form>
+
+
+
+        <%- include("partials/footer") %>
+            <script src="/bundle.js">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+            <script src="/buffer.js"></script>
+            <script src="/upload.js"></script>
+            </body>
+
+            </html>

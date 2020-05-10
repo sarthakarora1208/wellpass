@@ -222,17 +222,25 @@ exports.getLogout = asyncHandler(async (req, res, next) => {
   //let data = await
 });
 exports.postVerifyAddress = asyncHandler(async (req, res, next) => {
+  console.log();
   const client = new GraphQLClient({ endpoint: `${HOST_URL}/api` });
   try{
      const assetsList = await client.listAssets({
-       ownerAddress: userAddress,
+       ownerAddress: req.body.userAddress,
     });
     const asset = assetsList.assets[0]
-    res.render('verification-successful',{userAddress ,ownerAddress,assetAddress})
+    const assetAddress = asset.address;
+    const userAddress = asset.owner;
+    const hospitalAddress = asset.issuer;
+    const time = asset.renaissanceTime;
 
-  } catch (err){
+    res.render('verification-successful',{userAddress ,hospitalAddress,assetAddress,time})
+
+  } catch (error){
+    console.log(error)
     if (error.response) {
       req.flash('error_msg', error.response.data.error);
+      console.log(error.response)
     }
     res.render('verification-failed');
 

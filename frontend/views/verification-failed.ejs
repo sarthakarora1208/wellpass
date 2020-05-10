@@ -1,0 +1,26 @@
+<%- include("partials/header") %>
+    <link rel="stylesheet" href="/admin.css" />
+    <%- include("partials/navbar") %>
+        <div style="text-align: center; margin: 50px;">
+            <div class="ui icon header">
+                <i style="color: red; font-size: 5em;" class="remove icon"></i><span style="font-size: 2em; color: aliceblue;"> Invalid
+            <span style="color:red">Address!</span></span>
+            </div>
+        </div>
+        <div style="border-radius: 20px; text-align: center;" class="card-action">
+
+        <a href="/verify" class="ui circular green labeled icon button">
+            <i class="plus icon"></i>Try Again
+        </a>
+            </a>
+        </div>
+
+        <%- include("partials/footer") %>
+            <script src="/bundle.js">
+            </script>
+            <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
+            <script src="/buffer.js"></script>
+            <script src="/upload.js"></script>
+            </body>
+
+            </html>

@@ -22,6 +22,6 @@ router.route('/user-register').get(getUserRegister)
 router
   .route('/hospital-register')
   .get(getHospitalOwnerRegister)
-router.route('/verified-address').post(postVerifyAddress);
+router.route('/verify').post(postVerifyAddress);
 
 module.exports = router;
