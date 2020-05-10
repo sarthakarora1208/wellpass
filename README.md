@@ -28,7 +28,7 @@ The server will be running on [http://localhost:5000/](http://localhost:5000/)
 ![](demo/4.gif)
 ![](demo/5.gif)
 ![](demo/6.gif)
-![](demo/wellpass(2).jpg)
+![](demo/wellpass (2).jpg)
 
 ## App Info
 
