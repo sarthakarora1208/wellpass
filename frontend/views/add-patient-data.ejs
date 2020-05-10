@@ -111,7 +111,7 @@
                 <div style="text-align: center;" class="actions">
                     <form action="/hospitals/<%= hospital.name.split(' ').join("") %>/<%= id %>/add-patient-data" method="POST" id="patientDataForm">
                         <input type="hidden" value="<%= patientAddress %>" name="patientAddress" id="patientAddress"/>
-                        <input type="hidden" value="" name='data' id="data"/>
+                        <input type="hidden" value="" name='reportData' id="reportData"/>
                         <button class="ui pink basic ok inverted button" type="submit"><i class="checkmark icon"></i>Proceed</button>
                     </form>
                 </div>
@@ -135,6 +135,6 @@
             <script src="/js/bundle.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/ipfs-http-client/dist/index.min.js"></script>
             <script src="/js/buffer.js"></script>
-            <script src="/js/upload.js"></script>
+            <script src="/js/addPatientData.js"></script>
             </body>
             </html>

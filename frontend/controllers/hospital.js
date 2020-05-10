@@ -97,6 +97,7 @@ exports.postAddHospital = asyncHandler(async (req, res, next) => {
 exports.getAddPatientData = asyncHandler(async (req, res, next) => {
 	const { id } = req.params;
 
+
 	try {
 		const userData = await getMe(req.cookies['token']);
 		let hospitalOwner = userData.data;
@@ -125,10 +126,14 @@ exports.postAddPatientData = asyncHandler(async (req, res, next) => {
 	const { hospitalName,id } = req.params;
 	console.log(hospitalName)
 	console.log(id);
-	const {patientAddress, data} = req.body;
+	const {patientAddress, reportData} = req.body;
 	console.log("INSIDE GET PATIENT DATA");
 	console.log(patientAddress);
-	console.log(data);
+	console.log(reportData);
+    const client = new GraphQLClient({ endpoint: `${HOST_URL}/api` });
+	const sleep = (timeout) =>
+	  new Promise((resolve) => setTimeout(resolve, timeout));
+
 	try {
 		const secretKey = req.cookies[`${hospitalName}-hospital-wallet`];
 		const hospitalWallet = fromSecretKey(secretKey);
@@ -142,7 +147,7 @@ exports.postAddPatientData = asyncHandler(async (req, res, next) => {
 			  typeUrl: 'json',
 			  value: {
 				sn: Math.random(), // To make this asset uniq every time this script runs
-				report: data,
+				report: reportData,
 			  },
 			},
 			wallet: hospitalWallet,
@@ -154,15 +159,14 @@ exports.postAddPatientData = asyncHandler(async (req, res, next) => {
 			wallet: hospitalWallet,
 			memo: 'sending in patient data',
 		});
-		console.log('view transfer tx', `${host}/node/explorer/txs/${hash}`);
 		await sleep(3000);
 		let { state } = await client.getAssetState({ address: assetAddress });
 		console.log('asset state', state);
-
 		await approvePatientDataRequest(id, req.cookies['token']);
-		req.flash('success_msg', 'Request approved for patient');
-		res.render('patient-data-success',);
+		await req.flash('success_msg', 'Request approved for patient');
+		res.render('patient-data-success',{ assetAddress,patientAddress });
 	} catch (error) {
+		console.log(error)
 		if (error.response) {
 			req.flash('error_msg', error.response.data.error);
 		}

@@ -11,7 +11,7 @@ const ipfs = window.IpfsHttpClient({
     port: 5001,
     protocol: "https",
 });
-const reportDataElement = document.getElementById('data');
+const reportDataElement = document.getElementById('reportData');
 const patientAddressElement = document.getElementById('patientAddress')
 async function createReport() {
 	var img = document.getElementById("imgFile").files[0];

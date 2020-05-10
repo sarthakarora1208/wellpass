@@ -67,12 +67,13 @@
                         <% if (pdRequest.isApproved) { %>
 
                             <p>
+                                <div style="display: none" id="report">
+                                    <%= report %>
+                                </div>
                                 <a href="#">
-                                    <button id="qr" onclick="$('.ui.basic.modal.mod1').modal('show');" class="ui circular medium blue labeled icon button">
-                        <i class="code icon"></i> Generate Qr Code
-                    </button>
-                                </a>
-                            </p>
+                                    <button id="qr" onclick="getQR()" class="ui circular medium blue labeled icon button">
+                                        <i class="code icon"></i> Generate Qr Code
+                                    </button>
 
                             <% } else { %>
                                 <p>
@@ -136,9 +137,8 @@
                     $(this).closest('.message').transition('fade');
                 });
             </script>
-            <script src="/bundle.js"></script>
-            <script src="/qrcode.min.js"></script>
-            <script src="/userDashboardNext.js"></script>
+            <script src="/js/bundle.js"></script>
+            <script src="/js/qrcode.min.js"></script>
+            <script src="/js/userDashboardNext.js"></script>
             </body>
-
             </html>
